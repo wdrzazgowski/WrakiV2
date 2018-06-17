@@ -73,14 +73,20 @@
 			<script>
 				function myMap() {
 				    var mapCanvas = document.getElementById("map");
-				    var mapOptions = {
-				        center: new google.maps.LatLng(54.6, 18.5),
-				        zoom: 10
-    				};
-    				var map = new google.maps.Map(mapCanvas, mapOptions);
+    				var myCenter = new google.maps.LatLng(54.6517,18.641067);
+					var mapCanvas = document.getElementById("map");
+					var mapOptions = {center: myCenter, zoom: 10};
+					var map = new google.maps.Map(mapCanvas, mapOptions);
+					var marker = new google.maps.Marker({position:myCenter});
+					marker.setMap(map);
+
+					var infowindow = new google.maps.InfoWindow({
+						content:"Ślązak / ORP 304<br>54° 39' 10.2 N , 18° 38' 46.4 E<br>Głębokość nad wrakiem: 25m<br>Głębokość przy dnie: 31m<br>Opis | Zdjęcia | Wypłynięcia"
+					});
+
+					infowindow.open(map,marker);
 				}
 			</script>
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWacStX5UgydXseVWxouhe91OE_ho-bBU&callback=myMap"></script>
-
 	</body>
 </html>
